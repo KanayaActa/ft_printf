@@ -6,7 +6,7 @@
 /*   By: miwasa <miwasa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 14:31:16 by miwasa            #+#    #+#             */
-/*   Updated: 2024/11/02 07:51:40 by miwasa           ###   ########.fr       */
+/*   Updated: 2024/11/02 08:01:57 by miwasa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,21 +121,15 @@ size_t	print_format(const char **format, va_list ap)
 	int				len;
 
 	offset = 0;
-	// printf("Format: %c\n", **format);
 	offset += parse_flags(&fmt_opts.flag, format);
-	// printf("Format: %c\n", **format);
 	offset += parse_width(&fmt_opts.width, format);
-	// printf("Format: %c\n", **format);
 	offset += parse_precision(&fmt_opts.precision, format);
-	// printf("Format: %c\n", **format);
 	offset += parse_type_specifier(&fmt_opts.type, format);
-	// printf("Format: %c\n", **format);
 	if (fmt_opts.type == 0)
 	{
 		(*format)++;
 		return (0);
 	}
-	// *format += offset;
 	len = print_type(&fmt_opts, ap);
 	return (len);
 }
